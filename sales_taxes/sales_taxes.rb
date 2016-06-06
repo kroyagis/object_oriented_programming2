@@ -1,5 +1,5 @@
 class Item
-  attr_accessor :quantity, :price
+  attr_accessor :name, :quantity, :unit_price, :tax_category
 
   def initialize(name, quantity, price, category)
     @name = name
@@ -7,9 +7,21 @@ class Item
     @price = price
     @category = category
   end
+
+  def which_category(item)
+
+  end
 end
 
 class Receipt
+
+  def print_receipt(shopping_cart)
+
+  end
+
+  def calculate_price
+
+  end
 
 end
 
