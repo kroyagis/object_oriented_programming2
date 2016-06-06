@@ -5,14 +5,22 @@ class Receipt < Item
   EXEMPT_ITEM = ['book', 'pill', 'chocolate']
   attr_accessor :sales_taxes, :total
 
+  def initialize(sales_taxes, total)
+    @sales_taxes = sales_taxes
+    @total = total
+  end
+
+  # Run this method to calculate the total
   def calculate_total
+
     @sales_taxes = 0
     @total = 0
+
     @shopping_cart.each do |item|
       EXEMPT_ITEM.each do |exempt|
         item.name.each do |name|
           if name.include?(exempt)
-           item.unit_tax -= 0.1
+           item.unit_tax = 1
           end
         end
       end
@@ -26,9 +34,10 @@ class Receipt < Item
     end
     puts "Sales Taxes: #{@sales_taxes}"
     puts "Total: #{@total}"
-    return @total
+    Receipt.new(@sales_taxes, @total)
   end
 end
+
 
 class ShoppingCart < Receipt
 
@@ -38,6 +47,7 @@ class ShoppingCart < Receipt
     @shopping_cart = []
   end
 
+  # Run this method to start shopping
   def start_shopping
     i = 0
     counter = 0

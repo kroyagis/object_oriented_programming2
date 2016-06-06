@@ -11,7 +11,3 @@ class Item
   end
 
 end
-
-
-# exempt: books, food, medical products
-#
